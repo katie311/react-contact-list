@@ -1,16 +1,16 @@
 import React from 'react';
-import Card from './Card';
-import { Button, Grid } from 'semantic-ui-react';
+import Flashcard from './Flashcard';
+import { Card, } from 'semantic-ui-react';
 
 
-const Cards = ({ cards, removeCard, }) => (
-    <Grid>
+const Cards = ({ cards, removeFlashcard, editFlashcard, }) => (
+    <Card.Group itemsPerRow={4}>
     {
-        cards.map( card => (
-            <Card key={card.id} {...card} removeCard={removeCard}/>
+        cards.map( flashcard => (
+            <Flashcard key={flashcard.id} {...flashcard} editFlashcard={editFlashcard} removeFlashcard={removeFlashcard}/>
         ))
     }
-    </Grid>
+    </Card.Group>
 );
 
 export default Cards;

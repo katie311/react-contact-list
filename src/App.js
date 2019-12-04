@@ -3,6 +3,7 @@ import Cards from './Cards';
 import CardForm from './CardForm';
 import './App.css';
 import { Container, Header, Button, Segment, Icon, } from "semantic-ui-react";
+import { timingSafeEqual } from 'crypto';
 
 class App extends React.Component {
   state = {
@@ -11,50 +12,48 @@ class App extends React.Component {
       { id: 2, question: "Question 2", answer: "Answer 2", showAnswer: false },
       { id: 3, question: "Question 3", answer: "Answer 3", showAnswer: false }
     ],
-    currentCard: 0,
+    // currentFlashcard: 0,
   }
 
   getId = () => Math.floor ((1 + Math.random()) * 10000);
 
-  addCard = ({ question, answer }) => {
-    let card = { id: this.getId(), question, answer }
-    this.setState({ cards: [...this.state.cards, card], });
+  addFlashcard = ({ question, answer }) => {
+    let flashcard = { id: this.getId(), question, answer }
+    this.setState({ cards: [...this.state.cards, flashcard], });
   }
 
-  editCard = (id) => {
-    
-  }
-
-  removeCard = (id) => {
-    const cards = this.state.cards.filter( card => {
-      if (card.id !== id)
-      return card;
+  editFlashcard = (newFlashcard, ) => {
+    const cards = this.state.cards.map( originalFlashcard => {
+      if (originalFlashcard.id === newFlashcard.id)
+        return newFlashcard;
+      return originalFlashcard;
     });
-    this.setState({cards, });
+    this.setState({ cards, })
   };
 
-  toggleForm = () => this.setState({ showForm: !this.state.showForm, })
+  removeFlashcard = (id) => {
+    const cards = this.state.cards.filter( flashcard => {
+      if (flashcard.id !== id)
+      return flashcard;
+    });
+    this.setState({ cards, });
+  };
 
-  // renderCards = () => {
-  //   const { cards } = this.state;
-  //   return cards.map( card => 
-  //     <li key={card.id}>{card.question}</li>
-  //     ) 
-  // };
+  toggleForm = () => this.setState({ showForm: !this.state.showForm })
 
   render () {
-    const { cards }= this.state
+    const { cards, }= this.state
 
 
     return (
       <Container style={{ paddingTop: "30px", }}>
-        <Header as = "h1">React Flash Cards</Header>
+        <Header as ="h1">React Flash Cards</Header>
         <br />
         <Segment basic>
-            <Button icon color="blue" onClick={this.toggleForm}>
+            <Button icon color="blue" onClick={this.toggleForm}>Add New Card
               <Icon name={ this.state.showForm ? "angle double up" : "angle double down" } />
             </Button>
-            { this.state.showForm ? <CardForm addCard={this.addCard} /> : null }
+            { this.state.showForm ? <CardForm addFlashcard={this.addFlashcard} /> : null }
         </Segment>
         <br />
         <hr />
@@ -63,7 +62,9 @@ class App extends React.Component {
             questionContent ={this.question}
             // showNextCard={this.boundShowNextCard}
             // showPrevCard = {this.boundShowPrevCard}
-            currentCard={this.state.currentCard}
+            currentFlashcard={this.state.currentFlashcard}
+            editFlashcard={ this.editFlashcard }
+            removeFlashcard={ this.removeFlashcard }
           />
       </Container>
     );
