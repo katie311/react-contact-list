@@ -25,7 +25,7 @@ class Flashcard extends React.Component {
                 {
                     this.state.editing ?
                     <Fragment>
-                    <CardForm question={this.props.question} answer={this.props.answer} id={this.props.id} editFlashcard={this.props.editFlashcard}  />
+                    <CardForm question={this.props.question} answer={this.props.answer} id={this.props.id} editFlashcard={this.props.editFlashcard}  toggleEdit={this.toggleEdit} />
                     
 
                     </Fragment>

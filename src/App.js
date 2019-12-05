@@ -22,14 +22,15 @@ class App extends React.Component {
     this.setState({ cards: [...this.state.cards, flashcard], });
   }
 
-  editFlashcard = (newFlashcard, ) => {
+  editFlashcard = (newFlashcard) => {
     const cards = this.state.cards.map( originalFlashcard => {
       if (originalFlashcard.id === newFlashcard.id)
         return newFlashcard;
       return originalFlashcard;
     });
-    this.setState({ cards, })
+    this.setState({ cards })
   };
+  // KATIE YOU CHANGED THE CODE IN LINE 31 from this.setState({ cards, })
 
   removeFlashcard = (id) => {
     const cards = this.state.cards.filter( flashcard => {
