@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import CardForm from './CardForm';
-import { Card, Button, } from "semantic-ui-react";
+import { Card, Button, Icon, } from "semantic-ui-react";
 
 
 class Flashcard extends React.Component {
@@ -35,10 +35,10 @@ class Flashcard extends React.Component {
                 }
                     <Card.Content extra className='ui two buttons'>
                         <div className='ui two buttons'>
-                            <Button color="blue" onClick={this.toggleEdit}>
+                            <Button color="blue" onClick={this.toggleEdit}><Icon name="pencil" />
                                 Edit
                             </Button>
-                            <Button color="red" onClick={() => this.props.removeFlashcard(this.props.id)}>
+                            <Button color="red" onClick={() => this.props.removeFlashcard(this.props.id)}><Icon name="trash" />
                                 Delete
                             </Button>
                         </div>

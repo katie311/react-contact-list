@@ -31,7 +31,7 @@ class CardForm extends React.Component {
             <Form onSubmit={this.handleSubmit}>
                 <Form.Input fluid required label="Question" placeholder="Question" name="question" value={this.state.question} onChange={this.handleChange}/>
                 <Form.Input fluid required label="Answer" placeholder="Answer" name="answer" value={this.state.answer} onChange={this.handleChange}/>
-                <Form.Button color="blue" inverted>Submit</Form.Button>
+                <Form.Button color="green" inverted>Submit</Form.Button>
             </Form>
         )
     };

@@ -48,7 +48,7 @@ class Home extends React.Component {
           <Header as ="h1">React Flash Cards</Header>
           <br />
           <Segment basic>
-              <Button icon color="blue" onClick={this.toggleForm}>Add New Card
+              <Button icon color="green" onClick={this.toggleForm}>Add New Card
                 <Icon name={ this.state.showForm ? "angle double up" : "angle double down" } />
               </Button>
               { this.state.showForm ? <CardForm addFlashcard={this.addFlashcard} /> : null }
@@ -58,8 +58,8 @@ class Home extends React.Component {
           <Cards 
               cards={ cards }
               questionContent ={this.question}
-              showNextCard={this.boundShowNextCard}
-              showPrevCard = {this.boundShowPrevCard}
+              // showNextCard={this.boundShowNextCard}
+              // showPrevCard = {this.boundShowPrevCard}
               currentFlashcard={this.state.currentFlashcard}
               editFlashcard={ this.editFlashcard }
               removeFlashcard={ this.removeFlashcard }
